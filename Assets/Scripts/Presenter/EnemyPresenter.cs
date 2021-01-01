@@ -12,4 +12,9 @@ public class EnemyPresenter
         enemyModel = new EnemyModel();
         this.view = view;
     }
+
+    public void enemyMove(int random)
+    {
+        view.enemyMove(new Vector2(-1 * enemyModel.speed, random * enemyModel.speed));
+    }
 }
