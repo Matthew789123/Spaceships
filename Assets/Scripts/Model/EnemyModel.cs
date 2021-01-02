@@ -13,8 +13,8 @@ public class EnemyModel
         speed = 3;
     }
 
-    public void gotHit()
+    public void gotHit(int damage)
     {
-        hp--;
+        hp -= damage;
     }
 }

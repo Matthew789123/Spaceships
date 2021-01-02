@@ -6,17 +6,13 @@ public class EnemyView : MonoBehaviour
 {
     private EnemyPresenter enemyPresenter;
     private Rigidbody2D rigidbody2D;
-    System.Random rnd;
-
-    public EnemyView()
-    {
-        enemyPresenter = new EnemyPresenter(this);
-        rnd = new System.Random();
-    }
+    private System.Random rnd;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyPresenter = new EnemyPresenter(this);
+        rnd = new System.Random();
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -40,7 +36,13 @@ public class EnemyView : MonoBehaviour
         rigidbody2D.velocity = vector;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void gotHit(int damage)
     {
+        enemyPresenter.gotHit(damage);
+    }
+
+    public void destroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

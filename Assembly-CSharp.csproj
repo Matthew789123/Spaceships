@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Presenter\SpawnerPresenter.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
+    <Compile Include="Assets\Scripts\View\ProjectileView.cs" />
     <Compile Include="Assets\Scripts\View\SpawnerView.cs" />
     <None Include="Assets\2D Space Kit\Backgrounds\Background Tip.txt" />
     <None Include="Assets\2D Space Kit\Readme.txt" />

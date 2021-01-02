@@ -7,16 +7,11 @@ public class SpawnerView : MonoBehaviour
     private SpawnerPresenter spawnerPresenter;
     private System.Random rnd;
 
-    public SpawnerView()
-    {
-        spawnerPresenter = new SpawnerPresenter(this);
-        rnd = new System.Random();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnerPresenter = new SpawnerPresenter(this);
+        rnd = new System.Random();
     }
 
     // Update is called once per frame
