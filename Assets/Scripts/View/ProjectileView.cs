@@ -6,13 +6,11 @@ public class ProjectileView : MonoBehaviour
 {
     public int speed;
     public int damage;
-    private Rigidbody2D rigidbody2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        rigidbody2D.velocity = new Vector2(speed, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
     }
 
     // Update is called once per frame
@@ -23,9 +21,11 @@ public class ProjectileView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Projectile")
+            return;
+        if (collision.tag == "Enemy" && speed > 0)
             collision.GetComponent<EnemyView>().gotHit(damage);
-        if (rigidbody2D.IsTouching(GameObject.Find("Player").GetComponent<BoxCollider2D>()))
+        if (collision.name == "Player" && speed < 0)
             collision.GetComponent<PlayerView>().gotHit(damage);
         Destroy(gameObject);
     }
