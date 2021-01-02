@@ -45,4 +45,18 @@ public class EnemyPresenter
         view.destroyEnemy();
         view.collidePlayer(enemyModel.damage);
     }
+
+    public void shoot()
+    {
+        if (enemyModel.cooldown == 0)
+        {
+            enemyModel.shoot();
+            view.shoot(enemyModel.projectileSpeed, enemyModel.damage);
+        }
+    }
+
+    public void cooldownDown()
+    {
+        enemyModel.cooldownDown();
+    }
 }
