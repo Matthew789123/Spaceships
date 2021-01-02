@@ -11,16 +11,16 @@ public class EnemyPresenter
     public EnemyPresenter(EnemyView view)
     {
         rnd = new System.Random();
-        
-        if (view.type == 0)
+        int i = rnd.Next(0, 3);
+        if (i == 0)
         {
             enemyModel = new WeakEnemyModel();
         }
-        else if (view.type == 1)
+        else if (i == 1)
         {
             enemyModel = new MidEnemyModel();
         }
-        else if (view.type == 2)
+        else if (i == 2)
         {
             enemyModel = new StrongEnemyModel();
         }

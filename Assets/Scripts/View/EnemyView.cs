@@ -7,7 +7,6 @@ public class EnemyView : MonoBehaviour
     private EnemyPresenter enemyPresenter;
     private Rigidbody2D rigidbody2D;
     private System.Random rnd;
-    public int type;
 
     // Start is called before the first frame update
     void Start()

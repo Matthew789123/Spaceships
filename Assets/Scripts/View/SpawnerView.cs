@@ -27,25 +27,7 @@ public class SpawnerView : MonoBehaviour
 
     public void addEnemy()
     {
-        GameObject enemy=null;
-        int i = rnd.Next(0, 3);
-        if(i==0)
-        {
-            enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
-            
-        }
-        else if (i == 1)
-        {
-            enemy = Instantiate(GameObject.Find("EnemyMedium"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
-            
-        }
-        else if (i == 2)
-        {
-            enemy = Instantiate(GameObject.Find("EnemyStrong"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
-            
-        }
-        enemy.AddComponent<EnemyView>();
-        EnemyView ev = enemy.AddComponent<EnemyView>();
-        ev.type = i;
+       GameObject enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+       enemy.AddComponent<EnemyView>();
     }
 }
