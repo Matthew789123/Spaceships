@@ -32,4 +32,11 @@ public class EnemyPresenter
     {
         view.enemyMove(new Vector2(-1 * enemyModel.speed, random * enemyModel.speed));
     }
+
+    public void gotHit(int damage)
+    {
+        enemyModel.gotHit(damage);
+        if (enemyModel.hp <= 0)
+            view.destroyEnemy();
+    }
 }

@@ -17,12 +17,16 @@ public class PlayerView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerPresenter.shootPlayer();
+        }
     }
 
     private void FixedUpdate()
     {
         playerPresenter.movePlayer(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
+        playerPresenter.cooldownDown();
     }
 
     public void movePlayer(Vector2 vector)
@@ -37,5 +41,14 @@ public class PlayerView : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         playerPresenter.gotHit();
+    }
+
+    public void shootPlayer(int projectileSpeed, int damage)
+    {
+        Transform player = GetComponent<Transform>();
+        GameObject projectile = Instantiate(GameObject.Find("Projectile"), new Vector3(player.position.x + 0.5f, player.position.y), Quaternion.Euler(0, 0, -90));
+        ProjectileView pView = projectile.AddComponent<ProjectileView>();
+        pView.speed = projectileSpeed;
+        pView.damage = damage;
     }
 }

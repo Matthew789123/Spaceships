@@ -24,4 +24,18 @@ public class PlayerPresenter
     {
         view.movePlayer(new Vector2(moveInputHorizontal * playerModel.speed, moveInputVertical * playerModel.speed));
     }
+
+    public void shootPlayer()
+    {
+        if (playerModel.cooldown == 0)
+        {
+            playerModel.shootPlayer();
+            view.shootPlayer(playerModel.projectileSpeed, playerModel.damage);
+        }
+    }
+
+    public void cooldownDown()
+    {
+        playerModel.cooldownDown();
+    }
 }
