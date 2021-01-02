@@ -2,73 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyView : MonoBehaviour
+public class EnemyView : ShipView
 {
-    private EnemyPresenter enemyPresenter;
-    private Rigidbody2D rigidbody2D;
     private System.Random rnd;
-
     public int type;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        enemyPresenter = new EnemyPresenter(this);
+        shipPresenter = new EnemyPresenter(this, type);
         rnd = new System.Random();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         if (rigidbody2D.IsTouching(GameObject.Find("WallTop").GetComponent<BoxCollider2D>()))
-            enemyPresenter.enemyMove(-1);
+            shipPresenter.move(-1, -1);
         else if (rigidbody2D.IsTouching(GameObject.Find("WallBottom").GetComponent<BoxCollider2D>()))
-            enemyPresenter.enemyMove(1);
+            shipPresenter.move(1, -1);
         else
-            enemyPresenter.enemyMove(rnd.Next(-1, 2));
-        enemyPresenter.cooldownDown();
-        enemyPresenter.shoot();
-    }
-
-    public void enemyMove(Vector2 vector)
-    {
-        rigidbody2D.velocity = vector;
-    }
-
-    public void gotHit(int damage)
-    {
-        enemyPresenter.gotHit(damage);
-    }
-
-    public void destroyEnemy()
-    {
-        Destroy(gameObject);
+            shipPresenter.move(rnd.Next(-1, 2), -1);
+        base.FixedUpdate();
+        shipPresenter.shoot();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
-            enemyPresenter.collidePlayer();
+            shipPresenter.collidePlayer();
         if (collision.name == "WallLeft")
-            destroyEnemy();
+            destroy();
     }
 
-    public void collidePlayer(int damage)
+    protected override ProjectileView createProjectile(int projectileSpeed, Transform parent, string projectileType)
+    {
+        GameObject projectile = Instantiate(GameObject.Find(projectileType), new Vector3(parent.position.x - 0.7f, parent.position.y), Quaternion.Euler(0, 0, 90));
+        ProjectileView pView = projectile.AddComponent<ProjectileView>();
+        pView.speed = -1 * projectileSpeed;
+        return pView;
+    }
+
+    public override void collidePlayer(int damage)
     {
         GameObject.Find("Player").GetComponent<PlayerView>().gotHit(damage);
-    }
-
-    public void shoot(int projectileSpeed, int damage)
-    {
-        Transform enemy = GetComponent<Transform>();
-        GameObject projectile = Instantiate(GameObject.Find("Projectile"), new Vector3(enemy.position.x - 0.5f, enemy.position.y), Quaternion.Euler(0, 0, 90));
-        ProjectileView pView = projectile.AddComponent<ProjectileView>();
-        pView.speed = -projectileSpeed;
-        pView.damage = damage;
     }
 }

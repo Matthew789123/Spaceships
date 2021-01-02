@@ -13,5 +13,6 @@ public class MidEnemyModel : ShipModel
         cooldown = 0;
         cooldownMax = 50;
         damage = 2;
+        projectileType = "ProjectileMedium";
     }
 }

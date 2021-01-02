@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : ShipView
 {
-    private PlayerPresenter playerPresenter;
-    private Rigidbody2D rigidbody2D;
-
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        playerPresenter = new PlayerPresenter(this);
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        shipPresenter = new PlayerPresenter(this);
+        base.Start();
     }
 
     // Update is called once per frame
@@ -19,37 +16,21 @@ public class PlayerView : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerPresenter.shootPlayer();
+            shipPresenter.shoot();
         }
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        playerPresenter.movePlayer(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
-        playerPresenter.cooldownDown();
+        shipPresenter.move(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
+        base.FixedUpdate();
     }
 
-    public void movePlayer(Vector2 vector)
+    protected override ProjectileView createProjectile(int projectileSpeed, Transform parent, string projectileType)
     {
-        rigidbody2D.velocity = vector;
-    }
-
-    public void gotHit(int damgae)
-    {
-        playerPresenter.gotHit(damgae);
-    }
-
-    public void destroyPlayer()
-    {
-        Destroy(gameObject);
-    }
-
-    public void shootPlayer(int projectileSpeed, int damage)
-    {
-        Transform player = GetComponent<Transform>();
-        GameObject projectile = Instantiate(GameObject.Find("Projectile"), new Vector3(player.position.x + 0.5f, player.position.y), Quaternion.Euler(0, 0, -90));
+        GameObject projectile = Instantiate(GameObject.Find(projectileType), new Vector3(parent.position.x + 0.7f, parent.position.y), Quaternion.Euler(0, 0, -90));
         ProjectileView pView = projectile.AddComponent<ProjectileView>();
         pView.speed = projectileSpeed;
-        pView.damage = damage;
+        return pView;
     }
 }

@@ -10,6 +10,7 @@ public abstract class ShipModel
     public int cooldown { get; set; }
     protected int cooldownMax { get; set; }
     public int damage { get; set; }
+    public string projectileType { get; set; }
 
     public void gotHit(int damage)
     {
