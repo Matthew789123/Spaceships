@@ -13,5 +13,6 @@ public class StrongEnemyModel : ShipModel
         cooldown = 0;
         cooldownMax = 50;
         damage = 3;
+        projectileType = "ProjectileStrong";
     }
 }

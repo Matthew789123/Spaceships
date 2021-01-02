@@ -12,5 +12,6 @@ public class PlayerModel : ShipModel
         cooldown = 0;
         cooldownMax = 50;
         damage = 1;
+        projectileType = "ProjectilePlayer";
     }
 }

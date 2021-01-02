@@ -2,61 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPresenter
+public class EnemyPresenter : ShipPresenter
 {
-    private ShipModel enemyModel;
-    private EnemyView view;
-    private System.Random rnd;
 
-    public EnemyPresenter(EnemyView view)
+    public EnemyPresenter(ShipView view, int type) : base(view)
     {
-        rnd = new System.Random();
-        
-        if (view.type == 0)
+        System.Random rnd = new System.Random();
+        if (type == 0)
         {
-            enemyModel = new WeakEnemyModel();
+            shipModel = new WeakEnemyModel();
         }
-        else if (view.type == 1)
+        else if (type == 1)
         {
-            enemyModel = new MidEnemyModel();
+            shipModel = new MidEnemyModel();
         }
-        else if (view.type == 2)
+        else if (type == 2)
         {
-            enemyModel = new StrongEnemyModel();
-        }
-
-        this.view = view;
-    }
-
-    public void enemyMove(int random)
-    {
-        view.enemyMove(new Vector2(-1 * enemyModel.speed, random * enemyModel.speed));
-    }
-
-    public void gotHit(int damage)
-    {
-        enemyModel.gotHit(damage);
-        if (enemyModel.hp <= 0)
-            view.destroyEnemy();
-    }
-
-    public void collidePlayer()
-    {
-        view.destroyEnemy();
-        view.collidePlayer(enemyModel.damage);
-    }
-
-    public void shoot()
-    {
-        if (enemyModel.cooldown == 0)
-        {
-            enemyModel.shoot();
-            view.shoot(enemyModel.projectileSpeed, enemyModel.damage);
+            shipModel = new StrongEnemyModel();
         }
     }
 
-    public void cooldownDown()
+    public override void collidePlayer()
     {
-        enemyModel.cooldownDown();
+        view.destroy();
+        view.collidePlayer(shipModel.damage);
     }
 }

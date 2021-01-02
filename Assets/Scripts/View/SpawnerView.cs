@@ -14,12 +14,6 @@ public class SpawnerView : MonoBehaviour
         rnd = new System.Random();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         spawnerPresenter.addEnemy(rnd.Next(4));
