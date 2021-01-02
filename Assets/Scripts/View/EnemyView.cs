@@ -29,6 +29,8 @@ public class EnemyView : MonoBehaviour
             enemyPresenter.enemyMove(1);
         else
             enemyPresenter.enemyMove(rnd.Next(-1, 2));
+        enemyPresenter.cooldownDown();
+        enemyPresenter.shoot();
     }
 
     public void enemyMove(Vector2 vector)
@@ -50,10 +52,21 @@ public class EnemyView : MonoBehaviour
     {
         if (collision.name == "Player")
             enemyPresenter.collidePlayer();
+        if (collision.name == "WallLeft")
+            destroyEnemy();
     }
 
     public void collidePlayer(int damage)
     {
         GameObject.Find("Player").GetComponent<PlayerView>().gotHit(damage);
+    }
+
+    public void shoot(int projectileSpeed, int damage)
+    {
+        Transform enemy = GetComponent<Transform>();
+        GameObject projectile = Instantiate(GameObject.Find("Projectile"), new Vector3(enemy.position.x - 0.5f, enemy.position.y), Quaternion.Euler(0, 0, 90));
+        ProjectileView pView = projectile.AddComponent<ProjectileView>();
+        pView.speed = -projectileSpeed;
+        pView.damage = damage;
     }
 }
