@@ -32,7 +32,7 @@ public class SpawnerView : MonoBehaviour
 
     public void addEnemy()
     {
-       GameObject enemy = Instantiate(GameObject.FindGameObjectWithTag("Respawn"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+       GameObject enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
        enemy.AddComponent<EnemyView>();
     }
 }

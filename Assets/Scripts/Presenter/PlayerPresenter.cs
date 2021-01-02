@@ -20,8 +20,8 @@ public class PlayerPresenter
             view.destroyPlayer();
     }
 
-    public void movePlayer(float moveInput)
+    public void movePlayer(float moveInputVertical, float moveInputHorizontal)
     {
-        view.movePlayer(new Vector2(0, moveInput * playerModel.speed));
+        view.movePlayer(new Vector2(moveInputHorizontal * playerModel.speed, moveInputVertical * playerModel.speed));
     }
 }

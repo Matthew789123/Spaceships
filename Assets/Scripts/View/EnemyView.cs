@@ -27,11 +27,20 @@ public class EnemyView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        enemyPresenter.enemyMove(rnd.Next(-1, 2));
+        if (rigidbody2D.IsTouching(GameObject.Find("WallTop").GetComponent<BoxCollider2D>()))
+            enemyPresenter.enemyMove(-1);
+        else if (rigidbody2D.IsTouching(GameObject.Find("WallBottom").GetComponent<BoxCollider2D>()))
+            enemyPresenter.enemyMove(1);
+        else
+            enemyPresenter.enemyMove(rnd.Next(-1, 2));
     }
 
     public void enemyMove(Vector2 vector)
     {
         rigidbody2D.velocity = vector;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
     }
 }

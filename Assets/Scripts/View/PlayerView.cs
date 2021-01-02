@@ -22,7 +22,7 @@ public class PlayerView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerPresenter.movePlayer(Input.GetAxisRaw("Vertical"));
+        playerPresenter.movePlayer(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
     }
 
     public void movePlayer(Vector2 vector)
@@ -32,7 +32,6 @@ public class PlayerView : MonoBehaviour
 
     public void destroyPlayer()
     {
-        Destroy(rigidbody2D);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
