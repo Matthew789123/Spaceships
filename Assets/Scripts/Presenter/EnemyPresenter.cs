@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyPresenter
 {
-    private EnemyModel enemyModel;
+    private ShipModel enemyModel;
     private EnemyView view;
     private System.Random rnd;
 
     public EnemyPresenter(EnemyView view)
     {
         rnd = new System.Random();
-        int i = rnd.Next(0, 2);
+        int i = rnd.Next(0, 3);
         if (i == 0)
         {
             enemyModel = new WeakEnemyModel();
@@ -38,5 +38,11 @@ public class EnemyPresenter
         enemyModel.gotHit(damage);
         if (enemyModel.hp <= 0)
             view.destroyEnemy();
+    }
+
+    public void collidePlayer()
+    {
+        view.destroyEnemy();
+        view.collidePlayer(enemyModel.damage);
     }
 }

@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidEnemyModel : EnemyModel
+public class MidEnemyModel : ShipModel
 {
     // Start is called before the first frame update
     public MidEnemyModel()
     {
         hp = 2;
         speed = 4;
+        projectileSpeed = 5;
+        cooldown = 0;
+        cooldownMax = 50;
+        damage = 2;
     }
 }

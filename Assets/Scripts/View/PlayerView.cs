@@ -34,13 +34,14 @@ public class PlayerView : MonoBehaviour
         rigidbody2D.velocity = vector;
     }
 
-    public void destroyPlayer()
+    public void gotHit(int damgae)
     {
+        playerPresenter.gotHit(damgae);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void destroyPlayer()
     {
-        playerPresenter.gotHit();
+        Destroy(gameObject);
     }
 
     public void shootPlayer(int projectileSpeed, int damage)

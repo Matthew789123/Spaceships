@@ -23,10 +23,10 @@ public class ProjectileView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (rigidbody2D.IsTouching(GameObject.Find("Player").GetComponent<BoxCollider2D>()))
-            return;
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.tag == "Enemy")
             collision.GetComponent<EnemyView>().gotHit(damage);
+        if (rigidbody2D.IsTouching(GameObject.Find("Player").GetComponent<BoxCollider2D>()))
+            collision.GetComponent<PlayerView>().gotHit(damage);
         Destroy(gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPresenter
 {
-    private PlayerModel playerModel;
+    private ShipModel playerModel;
     private PlayerView view;
 
     public PlayerPresenter(PlayerView view)
@@ -13,9 +13,9 @@ public class PlayerPresenter
         this.view = view;
     }
 
-    public void gotHit()
+    public void gotHit(int damage)
     {
-        playerModel.gotHit();
+        playerModel.gotHit(damage);
         if (playerModel.hp == 0)
             view.destroyPlayer();
     }
@@ -29,7 +29,7 @@ public class PlayerPresenter
     {
         if (playerModel.cooldown == 0)
         {
-            playerModel.shootPlayer();
+            playerModel.shoot();
             view.shootPlayer(playerModel.projectileSpeed, playerModel.damage);
         }
     }

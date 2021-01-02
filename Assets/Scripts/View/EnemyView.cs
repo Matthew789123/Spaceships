@@ -45,4 +45,15 @@ public class EnemyView : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Player")
+            enemyPresenter.collidePlayer();
+    }
+
+    public void collidePlayer(int damage)
+    {
+        GameObject.Find("Player").GetComponent<PlayerView>().gotHit(damage);
+    }
 }

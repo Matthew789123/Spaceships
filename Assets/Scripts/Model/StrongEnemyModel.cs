@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrongEnemyModel : EnemyModel
+public class StrongEnemyModel : ShipModel
 {
     // Start is called before the first frame update
     public StrongEnemyModel()
     {
-        hp = 1;
-        speed = 3;
+        hp = 3;
+        speed = 5;
+        projectileSpeed = 6;
+        cooldown = 0;
+        cooldownMax = 50;
+        damage = 3;
     }
 }
