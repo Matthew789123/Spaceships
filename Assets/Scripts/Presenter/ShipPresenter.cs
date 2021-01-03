@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class ShipPresenter
 {
-    protected ShipModel shipModel;
-    protected ShipView view;
+    public ShipModel shipModel;
+    public ShipView view;
 
     public ShipPresenter(ShipView view)
     {
         this.view = view;
     }
 
-    public void move(float moveVertical, float moveHorizontal)
+    public virtual void move(float moveVertical, float moveHorizontal)
     {
         view.move(new Vector2(moveHorizontal * shipModel.speed, moveVertical * shipModel.speed));
     }
@@ -24,16 +24,16 @@ public abstract class ShipPresenter
             view.destroy();
     }
 
-    public void shoot()
+    public virtual void shoot()
     {
         if (shipModel.cooldown == 0)
         {
             shipModel.shoot();
-            view.shoot(shipModel.projectileSpeed, shipModel.damage, shipModel.projectileType);
+            view.shoot(shipModel.projectileSpeed, shipModel.damage, shipModel.projectileType, shipModel.offset, shipModel.rotation, 0);
         }
     }
 
-    public void cooldownDown()
+    public virtual void cooldownDown()
     {
         shipModel.cooldownDown();
     }

@@ -79,10 +79,14 @@
     <Compile Include="Assets\Scripts\Model\SpawnerModel.cs" />
     <Compile Include="Assets\Scripts\Model\StrongEnemyModel.cs" />
     <Compile Include="Assets\Scripts\Model\WeakEnemyModel.cs" />
+    <Compile Include="Assets\Scripts\Presenter\CooldownReductionDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\MovementSpeedDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\PlayerPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\PlayerPresenterDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\ShipPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\SpawnerPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\TripleShootDecorator.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\ProjectileView.cs" />

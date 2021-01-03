@@ -33,14 +33,14 @@ public abstract class ShipView : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void shoot(int projectileSpeed, int damage, string projectileType)
+    public void shoot(int projectileSpeed, int damage, string projectileType, float Xoffset, int rotation, float Yoffset)
     {
         Transform parent = GetComponent<Transform>();
-        ProjectileView pView = createProjectile(projectileSpeed, parent, projectileType);
+        GameObject projectile = Instantiate(GameObject.Find(projectileType), new Vector3(parent.position.x + Xoffset, parent.position.y + Yoffset), Quaternion.Euler(0, 0, rotation));
+        ProjectileView pView = projectile.AddComponent<ProjectileView>();
+        pView.speed = projectileSpeed;
         pView.damage = damage;
     }
-
-    protected abstract ProjectileView createProjectile(int projectileSpeed, Transform parent, string projectileType); 
 
     public virtual void collidePlayer(int damage){}
 }
