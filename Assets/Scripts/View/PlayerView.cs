@@ -26,11 +26,19 @@ public class PlayerView : ShipView
         base.FixedUpdate();
     }
 
-    protected override ProjectileView createProjectile(int projectileSpeed, Transform parent, string projectileType)
+    public void getBonus(string bonusName)
     {
-        GameObject projectile = Instantiate(GameObject.Find(projectileType), new Vector3(parent.position.x + 0.7f, parent.position.y), Quaternion.Euler(0, 0, -90));
-        ProjectileView pView = projectile.AddComponent<ProjectileView>();
-        pView.speed = projectileSpeed;
-        return pView;
+        switch (bonusName)
+        {
+            case "SpeedBonus":
+                shipPresenter = new MovementSpeedDecorator(shipPresenter);
+                break;
+            case "TripleBonus":
+                shipPresenter = new TripleShootDecorator(shipPresenter);
+                break;
+            case "RapidBonus":
+                shipPresenter = new CooldownReductionDecorator(shipPresenter);
+                break;
+        }
     }
 }

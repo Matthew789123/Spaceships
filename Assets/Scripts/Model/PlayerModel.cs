@@ -13,5 +13,7 @@ public class PlayerModel : ShipModel
         cooldownMax = 50;
         damage = 1;
         projectileType = "ProjectilePlayer";
+        rotation = -90;
+        offset = 0.7f;
     }
 }

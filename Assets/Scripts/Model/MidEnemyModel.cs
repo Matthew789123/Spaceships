@@ -9,10 +9,12 @@ public class MidEnemyModel : ShipModel
     {
         hp = 2;
         speed = 4;
-        projectileSpeed = 5;
+        projectileSpeed = -5;
         cooldown = 0;
         cooldownMax = 50;
         damage = 2;
         projectileType = "ProjectileMedium";
+        rotation = 90;
+        offset = -0.7f;
     }
 }

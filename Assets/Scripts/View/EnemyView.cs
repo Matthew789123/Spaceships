@@ -31,16 +31,8 @@ public class EnemyView : ShipView
     {
         if (collision.name == "Player")
             shipPresenter.collidePlayer();
-        if (collision.name == "WallLeft")
-            destroy();
-    }
-
-    protected override ProjectileView createProjectile(int projectileSpeed, Transform parent, string projectileType)
-    {
-        GameObject projectile = Instantiate(GameObject.Find(projectileType), new Vector3(parent.position.x - 0.7f, parent.position.y), Quaternion.Euler(0, 0, 90));
-        ProjectileView pView = projectile.AddComponent<ProjectileView>();
-        pView.speed = -1 * projectileSpeed;
-        return pView;
+        if (collision.name == "WallDestroy")
+            Destroy(gameObject);
     }
 
     public override void collidePlayer(int damage)

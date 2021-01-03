@@ -9,10 +9,12 @@ public class WeakEnemyModel : ShipModel
     {
         hp = 1;
         speed = 3;
-        projectileSpeed = 4;
+        projectileSpeed = -4;
         cooldown = 0;
         cooldownMax = 50;
         damage = 1;
         projectileType = "ProjectileWeak";
+        rotation = 90;
+        offset = -0.7f;
     }
 }
