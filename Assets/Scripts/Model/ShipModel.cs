@@ -13,6 +13,7 @@ public abstract class ShipModel
     public string projectileType { get; set; }
     public int rotation { get; set; }
     public float offset { get; set; }
+    public int points { get; set; }
 
     public void gotHit(int damage)
     {
@@ -28,5 +29,10 @@ public abstract class ShipModel
     public void shoot()
     {
         cooldown = cooldownMax;
+    }
+
+    public void addLife()
+    {
+        hp++;
     }
 }

@@ -16,5 +16,6 @@ public class WeakEnemyModel : ShipModel
         projectileType = "ProjectileWeak";
         rotation = 90;
         offset = -0.7f;
+        points = 40;
     }
 }

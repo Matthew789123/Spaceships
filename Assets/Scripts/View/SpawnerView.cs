@@ -6,6 +6,7 @@ public class SpawnerView : MonoBehaviour
 {
     private SpawnerPresenter spawnerPresenter;
     private System.Random rnd;
+    public UnityEngine.UI.Text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -16,26 +17,90 @@ public class SpawnerView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        spawnerPresenter.addEnemy(rnd.Next(4));
+        spawnerPresenter.addEnemy();
     }
 
-    public void addEnemy()
+    public void addEnemyStage1()
     {
         GameObject enemy=null;
-        int i = rnd.Next(0, 3);
-        if (i == 0)
+        EnemyView ev = null;
+        int i = rnd.Next(100);
+        if (i < 80)
         {
             enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 0;
         }
-        else if (i == 1)
+        else if (i >= 80)
         {
             enemy = Instantiate(GameObject.Find("EnemyMedium"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 1;
         }
-        else if (i == 2)
+    }
+
+    public void addEnemyStage2()
+    {
+        GameObject enemy = null;
+        EnemyView ev = null;
+        int i = rnd.Next(100);
+        if (i < 50)
+        {
+            enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 0;
+        }
+        else if (i >= 50 && i < 85)
+        {
+            enemy = Instantiate(GameObject.Find("EnemyMedium"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 1;
+        }
+        else if (i >= 85)
         {
             enemy = Instantiate(GameObject.Find("EnemyStrong"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 2;
         }
-        EnemyView ev= enemy.AddComponent<EnemyView>();
-        ev.type = i;
+    }
+
+    public void addEnemyStage3()
+    {
+        GameObject enemy = null;
+        EnemyView ev = null;
+        int i = rnd.Next(100);
+        if (i < 35)
+        {
+            enemy = Instantiate(GameObject.Find("EnemyWeak"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 0;
+        }
+        else if (i >= 35 && i < 75)
+        {
+            enemy = Instantiate(GameObject.Find("EnemyMedium"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 1;
+        }
+        else if (i >= 75)
+        {
+            enemy = Instantiate(GameObject.Find("EnemyStrong"), new Vector3(13, rnd.Next(-4, 4), 0), Quaternion.Euler(0, 0, 90));
+            ev = enemy.AddComponent<EnemyView>();
+            ev.type = 2;
+        }
+    }
+
+    public void enemyDestroyed(int points)
+    {
+        spawnerPresenter.addPoints(points);
+    }
+
+    public void printPoints(int points)
+    {
+        scoreText.text = "Score: " + points.ToString();
+    }
+
+    public void addBonus(string name)
+    {
+        GameObject.Find("Player").GetComponent<PlayerView>().addBonus(name);
     }
 }

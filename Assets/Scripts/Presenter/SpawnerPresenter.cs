@@ -13,12 +13,32 @@ public class SpawnerPresenter
         this.view = view;
     }
 
-    public void addEnemy(int random)
+    public void addEnemy()
     {
-        if (random == 0 && spawnerModel.enemiesCount < 10)
+        if (spawnerModel.enemiesCount > 11)
+            return;
+        spawnerModel.addEnemy();
+        if (spawnerModel.stage == 0)
+            view.addEnemyStage1();
+        else if (spawnerModel.stage == 1)
+            view.addEnemyStage2();
+        else
+            view.addEnemyStage3();
+    }
+
+    public void addPoints(int points)
+    {
+        int stage = spawnerModel.stage;
+        spawnerModel.addPoints(points);
+        if (stage != spawnerModel.stage)
         {
-            spawnerModel.addEnemy();
-            view.addEnemy();
+            if (spawnerModel.stage == 1)
+                view.addBonus("movement");
+            else if (spawnerModel.stage == 2)
+                view.addBonus("triple");
+            else
+                view.addBonus("rapid");
         }
+        view.printPoints(spawnerModel.points);
     }
 }

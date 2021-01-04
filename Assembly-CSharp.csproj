@@ -64,15 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2D Space Kit\Scripts\AimBeam.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\Crosshair.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\CustomPointer.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\ExampleShipControl.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\PSDestroy.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\ParallaxLayer.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\PlayerControlledTurret.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\Projectile.cs" />
-    <Compile Include="Assets\2D Space Kit\Scripts\ShipCamera.cs" />
+    <Compile Include="Assets\Scripts\Model\LifeBonusModel.cs" />
     <Compile Include="Assets\Scripts\Model\MidEnemyModel.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Model\ShipModel.cs" />
@@ -81,6 +73,7 @@
     <Compile Include="Assets\Scripts\Model\WeakEnemyModel.cs" />
     <Compile Include="Assets\Scripts\Presenter\CooldownReductionDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\LifeBonusPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\MovementSpeedDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\PlayerPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\PlayerPresenterDecorator.cs" />
@@ -88,18 +81,11 @@
     <Compile Include="Assets\Scripts\Presenter\SpawnerPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\TripleShootDecorator.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\LifeBonusView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\ProjectileView.cs" />
     <Compile Include="Assets\Scripts\View\ShipView.cs" />
     <Compile Include="Assets\Scripts\View\SpawnerView.cs" />
-    <None Include="Assets\2D Space Kit\Backgrounds\Background Tip.txt" />
-    <None Include="Assets\2D Space Kit\Readme.txt" />
-    <None Include="Assets\2D Space Kit\Background Elements\Planets\Planet Masks\Note.txt" />
-    <None Include="Assets\2D Space Kit\Background Elements\Stars\Recolor Us!.txt" />
-    <None Include="Assets\2D Space Kit\Particles (Sprites)\Note on Flares.txt" />
-    <None Include="Assets\2D Space Kit\Backgrounds\Fantasy Purple 2048\Note.txt" />
-    <None Include="Assets\2D Space Kit\Scripts\WARNING.txt" />
-    <None Include="Assets\2D Space Kit\Ships and Stations\Rendering Tip.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -25,20 +25,4 @@ public class PlayerView : ShipView
         shipPresenter.move(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
         base.FixedUpdate();
     }
-
-    public void getBonus(string bonusName)
-    {
-        switch (bonusName)
-        {
-            case "SpeedBonus":
-                shipPresenter = new MovementSpeedDecorator(shipPresenter);
-                break;
-            case "TripleBonus":
-                shipPresenter = new TripleShootDecorator(shipPresenter);
-                break;
-            case "RapidBonus":
-                shipPresenter = new CooldownReductionDecorator(shipPresenter);
-                break;
-        }
-    }
 }

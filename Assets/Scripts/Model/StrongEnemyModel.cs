@@ -16,5 +16,6 @@ public class StrongEnemyModel : ShipModel
         projectileType = "ProjectileStrong";
         rotation = 90;
         offset = -0.7f;
+        points = 200;
     }
 }

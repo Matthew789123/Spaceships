@@ -5,12 +5,11 @@ using UnityEngine;
 public class EnemyView : ShipView
 {
     private System.Random rnd;
-    public int type;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        shipPresenter = new EnemyPresenter(this, type);
+        shipPresenter = new EnemyPresenter(this);
         rnd = new System.Random();
         base.Start();
     }
@@ -30,9 +29,9 @@ public class EnemyView : ShipView
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
-            shipPresenter.collidePlayer();
+            ((EnemyPresenter)shipPresenter).collidePlayer();
         if (collision.name == "WallDestroy")
-            Destroy(gameObject);
+            destroy(0);
     }
 
     public override void collidePlayer(int damage)

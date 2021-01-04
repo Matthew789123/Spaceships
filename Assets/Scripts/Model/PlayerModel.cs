@@ -15,5 +15,6 @@ public class PlayerModel : ShipModel
         projectileType = "ProjectilePlayer";
         rotation = -90;
         offset = 0.7f;
+        points = 0;
     }
 }
