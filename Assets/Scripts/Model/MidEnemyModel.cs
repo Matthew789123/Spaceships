@@ -16,5 +16,6 @@ public class MidEnemyModel : ShipModel
         projectileType = "ProjectileMedium";
         rotation = 90;
         offset = -0.7f;
+        points = 100;
     }
 }

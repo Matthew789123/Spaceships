@@ -8,4 +8,10 @@ public class PlayerPresenter : ShipPresenter
     {
         shipModel = new PlayerModel();
     }
+
+    public override void gotHit(int damage)
+    {
+        base.gotHit(damage);
+        view.printLifes(shipModel.hp);
+    }
 }

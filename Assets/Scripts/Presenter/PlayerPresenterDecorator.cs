@@ -26,4 +26,10 @@ public abstract class PlayerPresenterDecorator : ShipPresenter
     {
         presenter.shoot();
     }
+
+    public override void gotHit(int damage)
+    {
+        base.gotHit(damage);
+        view.printLifes(shipModel.hp);
+    }
 }

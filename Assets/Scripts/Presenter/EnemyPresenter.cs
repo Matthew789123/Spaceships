@@ -5,18 +5,18 @@ using UnityEngine;
 public class EnemyPresenter : ShipPresenter
 {
 
-    public EnemyPresenter(ShipView view, int type) : base(view)
+    public EnemyPresenter(ShipView view) : base(view)
     {
         System.Random rnd = new System.Random();
-        if (type == 0)
+        if (view.type == 0)
         {
             shipModel = new WeakEnemyModel();
         }
-        else if (type == 1)
+        else if (view.type == 1)
         {
             shipModel = new MidEnemyModel();
         }
-        else if (type == 2)
+        else if (view.type == 2)
         {
             shipModel = new StrongEnemyModel();
         }
@@ -24,7 +24,7 @@ public class EnemyPresenter : ShipPresenter
 
     public override void collidePlayer()
     {
-        view.destroy();
+        view.destroy(shipModel.points);
         view.collidePlayer(shipModel.damage);
     }
 }

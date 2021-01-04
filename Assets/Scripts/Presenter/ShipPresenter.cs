@@ -17,11 +17,11 @@ public abstract class ShipPresenter
         view.move(new Vector2(moveHorizontal * shipModel.speed, moveVertical * shipModel.speed));
     }
 
-    public void gotHit(int damage)
+    public virtual void gotHit(int damage)
     {
         shipModel.gotHit(damage);
         if (shipModel.hp <= 0)
-            view.destroy();
+            view.destroy(shipModel.points);
     }
 
     public virtual void shoot()
@@ -38,5 +38,11 @@ public abstract class ShipPresenter
         shipModel.cooldownDown();
     }
 
-    public virtual void collidePlayer(){}
+    public virtual void collidePlayer() {}
+
+    public virtual void addLife()
+    {
+        shipModel.addLife();
+        view.printLifes(shipModel.hp);
+    }
 }
