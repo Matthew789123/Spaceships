@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public abstract class ShipPresenter
@@ -24,6 +25,9 @@ public abstract class ShipPresenter
         if (shipModel.hp <= 0)
         {
             view.destroy(shipModel.points);
+            if (view.type == 3)
+                SceneManager.LoadScene("menu");
+
         }
             
     }
