@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class ShipPresenter
 {
     public ShipModel shipModel;
@@ -21,7 +22,10 @@ public abstract class ShipPresenter
     {
         shipModel.gotHit(damage);
         if (shipModel.hp <= 0)
+        {
             view.destroy(shipModel.points);
+        }
+            
     }
 
     public virtual void shoot()
