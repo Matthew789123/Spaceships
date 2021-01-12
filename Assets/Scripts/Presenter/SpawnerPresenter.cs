@@ -9,7 +9,7 @@ public class SpawnerPresenter
 
     public SpawnerPresenter(SpawnerView view)
     {
-        spawnerModel = SpawnerModel.getInstance();
+        spawnerModel = new SpawnerModel();
         this.view = view;
     }
 
@@ -40,5 +40,10 @@ public class SpawnerPresenter
                 view.addBonus("rapid");
         }
         view.printPoints(spawnerModel.points);
+    }
+
+    public int getPoints()
+    {
+        return spawnerModel.points;
     }
 }

@@ -7,18 +7,8 @@ public class SpawnerModel
     public int enemiesCount { get; set; }
     public int points { get; set; }
     public int stage { get; set; }
-    private static SpawnerModel model;
 
-    public static SpawnerModel getInstance()
-    {
-        if (model == null)
-        {
-            model = new SpawnerModel();
-        }
-        return model;
-    }
-
-    private SpawnerModel()
+    public SpawnerModel()
     {
         enemiesCount = 0;
         points = 0;
@@ -41,11 +31,5 @@ public class SpawnerModel
         else if (this.points > 3000)
             stage = 3;
     }
-
-    public void destroyInstance()
-    {
-        model = null;
-    }
     
-
 }

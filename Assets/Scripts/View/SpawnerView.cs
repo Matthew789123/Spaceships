@@ -38,7 +38,7 @@ public class SpawnerView : MonoBehaviour
             ev.type = 1;
         }
     }
-
+    
     public void addEnemyStage2()
     {
         GameObject enemy = null;
@@ -103,4 +103,10 @@ public class SpawnerView : MonoBehaviour
     {
         GameObject.Find("Player").GetComponent<PlayerView>().addBonus(name);
     }
+    
+    public int getPoints()
+    {
+        return spawnerPresenter.getPoints();
+    }
+
 }

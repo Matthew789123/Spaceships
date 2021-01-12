@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public abstract class ShipView : MonoBehaviour
@@ -19,7 +20,7 @@ public abstract class ShipView : MonoBehaviour
     {
         shipPresenter.cooldownDown();
     }
-
+    
     public void move(Vector2 vector)
     {
         rigidbody2D.velocity = vector;
@@ -29,7 +30,7 @@ public abstract class ShipView : MonoBehaviour
     {
         shipPresenter.gotHit(damage);
     }
-
+    
     public void destroy(int points)
     {
         GameObject.Find("Spawner").GetComponent<SpawnerView>().enemyDestroyed(points);
@@ -39,8 +40,34 @@ public abstract class ShipView : MonoBehaviour
             GameObject bonus = Instantiate(GameObject.Find("LifeBonus"), new Vector3(rigidbody2D.position.x, rigidbody2D.position.y), Quaternion.identity);
             bonus.AddComponent<LifeBonusView>();
         }
-        Destroy(gameObject);
+        if(type==3)
+        {
+            CheckScore(GameObject.Find("Spawner").GetComponent<SpawnerView>().getPoints());
+            SceneManager.LoadScene(0);
+
+        }
+        Destroy(gameObject); 
     }
+
+    public void CheckScore(int score)
+    {
+        string jsonString = PlayerPrefs.GetString("leaderboards");
+        Leaderboards.Leaderboard scores = JsonUtility.FromJson<Leaderboards.Leaderboard>(jsonString);
+        for (int i = 0; i < scores.entryList.Count; i++)
+        {
+            if (score > scores.entryList[i].score)
+            {
+                Leaderboards.Entry entry = new Leaderboards.Entry { score = score, name = "TEST" };
+                scores.entryList.Insert(i, entry);
+                scores.entryList.RemoveAt(scores.entryList.Count - 1);
+                break;
+            }
+        }
+        string json = JsonUtility.ToJson(scores);
+        PlayerPrefs.SetString("leaderboards", json);
+        PlayerPrefs.Save();
+    }
+
 
     public void shoot(int projectileSpeed, int damage, string projectileType, float Xoffset, int rotation, float Yoffset)
     {
