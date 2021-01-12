@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\Leaderboards.cs" />
     <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Model\EntryModel.cs" />
+    <Compile Include="Assets\Scripts\Model\LeaderboardModel.cs" />
     <Compile Include="Assets\Scripts\Model\LifeBonusModel.cs" />
     <Compile Include="Assets\Scripts\Model\MidEnemyModel.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerModel.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Assets\Scripts\Model\WeakEnemyModel.cs" />
     <Compile Include="Assets\Scripts\Presenter\CooldownReductionDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\LeaderboardPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\LifeBonusPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\MovementSpeedDecorator.cs" />
     <Compile Include="Assets\Scripts\Presenter\PlayerPresenter.cs" />
@@ -82,11 +85,16 @@
     <Compile Include="Assets\Scripts\Presenter\SpawnerPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\TripleShootDecorator.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\LeaderboardView.cs" />
     <Compile Include="Assets\Scripts\View\LifeBonusView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\ProjectileView.cs" />
     <Compile Include="Assets\Scripts\View\ShipView.cs" />
     <Compile Include="Assets\Scripts\View\SpawnerView.cs" />
+    <Compile Include="Assets\Scripts\View\State.cs" />
+    <Compile Include="Assets\Scripts\View\StateAngle.cs" />
+    <Compile Include="Assets\Scripts\View\StateNormal.cs" />
+    <Compile Include="Assets\Scripts\View\StateRandom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -124,6 +132,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\save.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />

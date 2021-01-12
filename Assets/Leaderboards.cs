@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,13 +69,21 @@ public class Leaderboards : MonoBehaviour
         string json = JsonUtility.ToJson(scores);
         PlayerPrefs.SetString("leaderboards", json);
         PlayerPrefs.Save();
-
     }
 
-
-    public class Leaderboard
+    private void Save(string json)
     {
-        public List<Entry> entryList;
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+
+    private void Load()
+    {
+        if(File.Exists(Application.dataPath + "/save.txt"))
+        {
+            string json = File.ReadAllText(Application.dataPath + "/save.txt");
+        }
+
+        
     }
 
     [System.Serializable]
@@ -83,5 +92,11 @@ public class Leaderboards : MonoBehaviour
         public int score;
         public string name;
     }
+
+    public class Leaderboard
+    {
+        public List<Entry> entryList;
+    }
+
 }
 
