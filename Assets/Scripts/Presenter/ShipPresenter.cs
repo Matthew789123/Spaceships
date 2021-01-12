@@ -30,6 +30,7 @@ public abstract class ShipPresenter
         if (shipModel.hp <= 0)
         {
             view.destroy(shipModel.points);
+            spawner.destroyInstance();
             if (view.type == 3)
             {
                 CheckScore(score);

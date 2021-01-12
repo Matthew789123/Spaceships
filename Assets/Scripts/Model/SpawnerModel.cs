@@ -42,6 +42,10 @@ public class SpawnerModel
             stage = 3;
     }
 
+    public void destroyInstance()
+    {
+        model = null;
+    }
     
 
 }
