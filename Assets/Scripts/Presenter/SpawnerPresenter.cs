@@ -9,7 +9,7 @@ public class SpawnerPresenter
 
     public SpawnerPresenter(SpawnerView view)
     {
-        spawnerModel = new SpawnerModel();
+        spawnerModel = SpawnerModel.getInstance();
         this.view = view;
     }
 
