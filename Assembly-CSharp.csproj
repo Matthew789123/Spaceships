@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Model\EntryModel.cs" />
+    <Compile Include="Assets\NewHighScore.cs" />
     <Compile Include="Assets\Scripts\Model\LeaderboardModel.cs" />
     <Compile Include="Assets\Scripts\Model\LifeBonusModel.cs" />
     <Compile Include="Assets\Scripts\Model\MidEnemyModel.cs" />

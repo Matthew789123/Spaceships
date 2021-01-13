@@ -52,8 +52,8 @@ public abstract class ShipView : MonoBehaviour
     
     public void CheckScore(int score)
     {
-        LeaderboardPresenter presenter = new LeaderboardPresenter(new LeaderboardView());
-        presenter.Insert(score);       
+        LeaderboardView view = new LeaderboardView();
+        view.Insert(score);  
     }
 
 

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LeaderboardPresenter
 {
-    public LeaderboardModel leaderboardModel;
-    public LeaderboardView view;
+    private LeaderboardModel leaderboardModel;
+    private LeaderboardView view;
 
     public LeaderboardPresenter(LeaderboardView view)
     {
