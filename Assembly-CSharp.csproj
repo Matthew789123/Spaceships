@@ -63,8 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Leaderboards.cs" />
-    <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Model\EntryModel.cs" />
     <Compile Include="Assets\Scripts\Model\LeaderboardModel.cs" />
     <Compile Include="Assets\Scripts\Model\LifeBonusModel.cs" />
@@ -87,6 +85,7 @@
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\LeaderboardView.cs" />
     <Compile Include="Assets\Scripts\View\LifeBonusView.cs" />
+    <Compile Include="Assets\Scripts\View\MainMenuView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\ProjectileView.cs" />
     <Compile Include="Assets\Scripts\View\ShipView.cs" />

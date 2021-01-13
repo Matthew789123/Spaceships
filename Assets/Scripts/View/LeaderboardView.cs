@@ -20,21 +20,6 @@ public class LeaderboardView : MonoBehaviour
 
         leaderboardPresenter.Load();
 
-        //SORTOWANIE LISTY WYNIKOW, BEDZIE DO WYWALENIA
-        /*
-        for (int i = 0; i < leaderboardPresenter.Count(); i++)
-        {
-            for (int j = i + 1; j < leaderboardPresenter.Count(); j++)
-            {
-                if (leaderboardPresenter.GetEntry(j).score > leaderboardPresenter.GetEntry(i).score)
-                {
-                    LeaderboardModel.Entry temp = leaderboardPresenter.GetEntry(i);
-                    scores.entryList[i] = scores.entryList[j];
-                    scores.entryList[j] = temp;
-                }
-            }
-        }
-        */
         transformEntryList = new List<Transform>();
         foreach (LeaderboardModel.Entry e in leaderboardPresenter.GetEntries())
         {

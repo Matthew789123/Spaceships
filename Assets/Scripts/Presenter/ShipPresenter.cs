@@ -7,7 +7,6 @@ public abstract class ShipPresenter
 {
     public ShipModel shipModel;
     public ShipView view;
-    public Leaderboards leaderboards;
 
     public ShipPresenter(ShipView view)
     {
