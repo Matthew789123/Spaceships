@@ -34,7 +34,7 @@ public class EnemyView : ShipView
         base.FixedUpdate();
         shipPresenter.shoot();
     }
-
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")

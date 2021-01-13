@@ -4,7 +4,7 @@ using UnityEngine;using UnityEngine.UI;
 
 public class LeaderboardView : MonoBehaviour
 {
-    protected LeaderboardPresenter leaderboardPresenter;
+    private LeaderboardPresenter leaderboardPresenter;
     private Transform template;
     private Transform container;
     private List<Transform> transformEntryList;
@@ -43,6 +43,12 @@ public class LeaderboardView : MonoBehaviour
 
 
         transformList.Add(entryTransform);
+    }
+
+    public void Insert(int score)
+    {
+        leaderboardPresenter = new LeaderboardPresenter(this);
+        leaderboardPresenter.Insert(score);
     }
 
 }
