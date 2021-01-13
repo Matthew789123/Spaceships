@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.IO;
 
 public abstract class ShipView : MonoBehaviour
 {
@@ -48,24 +49,11 @@ public abstract class ShipView : MonoBehaviour
         }
         Destroy(gameObject); 
     }
-
+    
     public void CheckScore(int score)
     {
-        string jsonString = PlayerPrefs.GetString("leaderboards");
-        Leaderboards.Leaderboard scores = JsonUtility.FromJson<Leaderboards.Leaderboard>(jsonString);
-        for (int i = 0; i < scores.entryList.Count; i++)
-        {
-            if (score > scores.entryList[i].score)
-            {
-                Leaderboards.Entry entry = new Leaderboards.Entry { score = score, name = "TEST" };
-                scores.entryList.Insert(i, entry);
-                scores.entryList.RemoveAt(scores.entryList.Count - 1);
-                break;
-            }
-        }
-        string json = JsonUtility.ToJson(scores);
-        PlayerPrefs.SetString("leaderboards", json);
-        PlayerPrefs.Save();
+        LeaderboardPresenter presenter = new LeaderboardPresenter(new LeaderboardView());
+        presenter.Insert(score);       
     }
 
 

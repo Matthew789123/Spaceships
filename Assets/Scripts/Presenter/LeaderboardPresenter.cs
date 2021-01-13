@@ -57,4 +57,21 @@ public class LeaderboardPresenter
         return leaderboardModel.scores.entryList;
     }
 
+    public void Insert(int score)
+    {
+        Load();
+        for (int i = 0; i < Count() - 1; i++)
+        {
+            if (score > GetEntry(i).score)
+            {
+                LeaderboardModel.Entry entry = new LeaderboardModel.Entry { score = score, name = "TEST" };
+                leaderboardModel.scores.entryList.Insert(i, entry);
+                leaderboardModel.scores.entryList.RemoveAt(Count() - 1);
+                break;
+            }
+        }
+        Save(leaderboardModel.scores);
+        
+    }
+
 }
