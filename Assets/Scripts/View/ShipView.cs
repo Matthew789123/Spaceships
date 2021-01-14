@@ -44,16 +44,15 @@ public abstract class ShipView : MonoBehaviour
         if(type==3)
         {
             CheckScore(GameObject.Find("Spawner").GetComponent<SpawnerView>().getPoints());
-            SceneManager.LoadScene(0);
-
         }
         Destroy(gameObject); 
     }
     
     public void CheckScore(int score)
     {
+       
         LeaderboardView view = new LeaderboardView();
-        view.Insert(score);  
+        view.CheckScore(score);  
     }
 
 
