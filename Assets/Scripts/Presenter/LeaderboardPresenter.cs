@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardPresenter
 {
     private LeaderboardModel leaderboardModel;
     private LeaderboardView view;
+    private bool changed=false;
 
     public LeaderboardPresenter(LeaderboardView view)
     {
@@ -22,8 +24,6 @@ public class LeaderboardPresenter
 
     public void Load()
     {
-        
-
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
             string json = File.ReadAllText(Application.dataPath + "/save.txt");
@@ -57,21 +57,35 @@ public class LeaderboardPresenter
         return leaderboardModel.scores.entryList;
     }
 
-    public void Insert(int score)
+    public void CheckScore(int score)
     {
         Load();
         for (int i = 0; i < Count() - 1; i++)
         {
-            if (score > GetEntry(i).score)
+            if (score >= GetEntry(i).score)
             {
-                LeaderboardModel.Entry entry = new LeaderboardModel.Entry { score = score, name = "TEST" };
-                leaderboardModel.scores.entryList.Insert(i, entry);
-                leaderboardModel.scores.entryList.RemoveAt(Count() - 1);
+                changed = true;
+                PlayerPrefs.SetInt("score", score);
+                PlayerPrefs.SetInt("position", i);
+                
                 break;
             }
         }
+        if(changed==true)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+            SceneManager.LoadScene(0);
+    }
+
+    public void addEntry()
+    {
+        Load();
+        LeaderboardModel.Entry entry = new LeaderboardModel.Entry { score = PlayerPrefs.GetInt("score"), name = PlayerPrefs.GetString("nick") };
+        leaderboardModel.scores.entryList.Insert(PlayerPrefs.GetInt("position"), entry);
+        leaderboardModel.scores.entryList.RemoveAt(Count() - 1);
         Save(leaderboardModel.scores);
-        
     }
 
 }

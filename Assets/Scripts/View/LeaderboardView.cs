@@ -45,10 +45,14 @@ public class LeaderboardView : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
-    public void Insert(int score)
+    public void CheckScore(int score)
     {
         leaderboardPresenter = new LeaderboardPresenter(this);
-        leaderboardPresenter.Insert(score);
+        leaderboardPresenter.CheckScore(score);
     }
-
+    public void addEntry()
+    {
+        leaderboardPresenter = new LeaderboardPresenter(this);
+        leaderboardPresenter.addEntry();
+    }
 }

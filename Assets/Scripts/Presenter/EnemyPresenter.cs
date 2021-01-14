@@ -7,19 +7,7 @@ public class EnemyPresenter : ShipPresenter
     private int counter = 0;
     public EnemyPresenter(ShipView view) : base(view)
     {
-        System.Random rnd = new System.Random();
-        if (view.type == 0)
-        {
-            shipModel = new WeakEnemyModel();
-        }
-        else if (view.type == 1)
-        {
-            shipModel = new MidEnemyModel();
-        }
-        else if (view.type == 2)
-        {
-            shipModel = new StrongEnemyModel();
-        }
+        shipModel = createEnemy();
     }
 
     public override void collidePlayer()
@@ -50,4 +38,16 @@ public class EnemyPresenter : ShipPresenter
         base.move(moveVertical, moveHorizontal);
     }
 
+    public ShipModel createEnemy()
+    {
+        switch (view.type)
+        {
+            case 0:
+                return new WeakEnemyModel();
+            case 1:
+                return new MidEnemyModel();
+            default:
+                return new StrongEnemyModel();
+        }
+    }
 }
