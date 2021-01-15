@@ -9,6 +9,11 @@ public class PlayerView : ShipView
     {
         shipPresenter = new PlayerPresenter(this);
         base.Start();
+        float vertExtent = Camera.main.GetComponent<Camera>().orthographicSize;
+        float horzExtent = vertExtent * Screen.width / Screen.height;
+        rigidbody2D.position = new Vector2(-horzExtent + 1, vertExtent / 2);
+        RectTransform transform = lifeText.GetComponent<RectTransform>();
+        transform.position = new Vector3(-horzExtent + 1.5f, vertExtent - 0.9f);
     }
 
     // Update is called once per frame
