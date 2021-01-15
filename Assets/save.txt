@@ -1,1 +1,1 @@
-{"entryList":[{"score":700,"name":"Player"},{"score":600,"name":"Player"},{"score":500,"name":"Player"},{"score":440,"name":"superNick"},{"score":400,"name":"TEST"},{"score":380,"name":""},{"score":360,"name":"TEST"}]}
+{"entryList":[{"score":700,"name":"Player"},{"score":600,"name":"Player"},{"score":540,"name":""},{"score":520,"name":"sadasd"},{"score":500,"name":"Player"},{"score":480,"name":"asdasd"},{"score":440,"name":"asdasdasdasda"}]}
