@@ -24,11 +24,11 @@ public class SpawnerModel
     {
         this.points += points;
         enemiesCount--;
-        if (this.points > 1000 && this.points < 2000)
+        if (this.points > 500 && this.points < 1000)
             stage = 1;
-        else if (this.points > 2000 && this.points < 3000)
+        else if (this.points > 1000 && this.points < 1500)
             stage = 2;
-        else if (this.points > 3000)
+        else if (this.points > 1500)
             stage = 3;
     }
     
