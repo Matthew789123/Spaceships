@@ -995,4 +995,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/menu.unity
   - Assets/Scenes/spaceships.unity
   - Assets/Scenes/NewHighscore.unity
-  playerPath: C:/Users/Mati_David/Desktop/xd/Spaceships.exe
+  playerPath: C:/Users/Mati_David/Desktop/build/Spaceships.exe

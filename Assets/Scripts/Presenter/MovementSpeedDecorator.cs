@@ -8,6 +8,6 @@ public class MovementSpeedDecorator : PlayerPresenterDecorator
 
     public override void move(float moveVertical, float moveHorizontal)
     {
-        presenter.move(2 * moveVertical, 2 * moveHorizontal);
+        presenter.move(1.5f * moveVertical, 1.5f * moveHorizontal);
     }
 }
