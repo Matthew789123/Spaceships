@@ -7,11 +7,6 @@ public class MainMenuView : MonoBehaviour
 {
    public void PlayGame()
     {
-        
-        if (PlayerPrefs.GetString("leaderboards") == null)
-        {
-
-        }
         SceneManager.LoadScene("spaceships");
     }
 
